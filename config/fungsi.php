@@ -1,6 +1,5 @@
 <?php
 
-
 if(empty($_SESSION['namauser']) ) {
 	header('location:../login.php');
 	exit;

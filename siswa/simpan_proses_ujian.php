@@ -61,7 +61,7 @@ if(isset($_POST['selesaiUjian'])){
 			}
 
 			
-			print_r($term[$no][$i] =array_values(array_unique(array_merge($kunci[$no], $jawaban[$no][$i]))));
+			print_r($term[$no][$i]);
 			echo "<br/>";
 			print_r($jawaban[$no][$i]);
 			echo "<br/>";
