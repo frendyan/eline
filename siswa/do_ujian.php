@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION[aktif] = 1;
 include "../config/koneksi.php";
 include "../config/fungsi.php";
 $id_user = $_SESSION['iduser'];
@@ -55,28 +54,20 @@ $id = $_POST['idUjian'];
 
 				<div class="sidebar-header">
 					<div class="user-info">
-						<span class="user-name text-up font-weight-bold"><?php get_nama_ujian_from_id($id) ?></span>
-						<span class="user-role">Siswa</span>
+						<span class="user-name text-up font-weight-bold"><?php echo get_pelajaran_from_id(get_id_pelajaran_from_id_ujian($id)) ?></span>						
+						<span class="user-role"><?php get_nama_ujian_from_id($id) ?></span>
+						<span class="user-role"></span>
 						<span class="user-status">
 							<i class="fa fa-circle"></i>
 							<span>Online</span>
 						</span>
 					</div>
 				</div>
+
 				<div class="sidebar-menu">
-					<ul>            
-						<li class="header-menu">
-							<span>Menu</span>
-						</li>
-						<li>
-							
-
-						</li>
-
-
-					</ul>
-				</div>       
-
+					
+				</div>        
+				
 			</div>
 
 

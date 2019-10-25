@@ -74,6 +74,14 @@ function get_pelajaran_from_id($id) {
 	return $dt['nama_pelajaran'];
 }
 
+function get_id_pelajaran_from_id_ujian($id) {
+	include 'koneksi.php';
+	$sql = "SELECT id_pelajaran FROM ujian where id_ujian='$id'";
+	$rs = mysqli_query($koneksi, $sql);
+	$dt = mysqli_fetch_array($rs);
+	return $dt['id_pelajaran'];
+}
+
 function cek_status_ujian_siswa($nis_siswa, $id_ujian) {
 	include 'koneksi.php';
 	$sql = "SELECT nis_siswa, id_ujian FROM hasil_ujian where nis_siswa = '$nis_siswa' AND id_ujian='$id_ujian'" ;
@@ -1079,18 +1087,10 @@ function cari_kata_dasar($kata){
 	}
 }
 
-//hapus spasi
-function hapus_spasi($stringg) {
-
-	$stringg = str_replace(' ', '', $stringg);
-	return $stringg;
-}
-
 
 //mencari sampai hasil stem untuk guru
 function preproses($input) {
 	include 'koneksi.php';
-	$kgrams = 4;
 	$data_pecah = pecah_kata(hapus_simbol($input));
 	for($i=0;$i<count($data_pecah);$i++){
 
@@ -1114,7 +1114,7 @@ function preproses($input) {
 	}
 	
 	$x1= implode(' ',$data_stem);
-	//$data = hapus_spasi($x1);
+	
 	$data = $x1;
 	return $data;
 }

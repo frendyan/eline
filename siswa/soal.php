@@ -2,15 +2,7 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<div class="container">
-					<div class="row p-b-0">
-						<div class="col">
-							<p class="p-t-5 title fs-15" align="left"><?php strtoupper(get_nama_ujian_from_id($id)) ?></p>
-							<hr>
-						</div>
-					</div>
-				</div>
-				<div class="card-body p-t-0">
+				<div class="card-body p-t-10">
 					<form action="proses_ujian.php" method="post">
 
 						<?php

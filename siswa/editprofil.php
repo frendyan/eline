@@ -25,7 +25,7 @@ $data  = mysqli_fetch_assoc($hasil);
 				<div class="container">
 					<div class="picture-container">
 						<div class="picture">
-							<img src="../img/siswa/<?php echo $data['foto'];?>" class="picture-src" id="wizardPicturePreview" title="">
+							<img src="../img/siswa/<?php echo $data['foto_siswa'];?>" class="picture-src" id="wizardPicturePreview" title="">
 							<input type="file" name="foto-siswa" id="wizard-picture" class="" required>
 						</div>
 						<h6 class="">Choose Picture</h6>
