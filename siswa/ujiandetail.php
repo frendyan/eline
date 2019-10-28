@@ -33,12 +33,7 @@
 									<td>Mata Pelajaran</td>
 									<td>:</td>
 									<td><?php echo $data['nama_pelajaran'] ?></td>
-								</tr>
-								<tr>
-									<td>Waktu</td>
-									<td>:</td>
-									<td>60 menit</td>
-								</tr>
+								</tr>								
 								<tr>
 									<td>Jumlah Soal</td>
 									<td>:</td>

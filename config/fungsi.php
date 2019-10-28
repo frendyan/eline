@@ -299,30 +299,30 @@ if (isset($_POST['simpanKelas'])) {
 //------------------------------------------------------------------------------------------------------------------------------------------------------//
 /////////////////////////////////////// UJIAN
 
-
 if (isset($_POST['cariUjian'])) {
 	$key = $_POST['txtCari'];
-	$key2 = get_guru_from_id($_POST['txtCari']);
-	$sql = "SELECT * from ujian where nama_ujian like '%".$key."%'";
-	$ujian_hasil = mysqli_query($koneksi, $sql) or exit("Error query : <b>".$sql."</b>.");	
+	$sql = "SELECT * from ujian where (nama_ujian like '%".$key."%')";
+	$ujian_hasil_admin = mysqli_query($koneksi, $sql) or exit("Error query : <b>".$sql."</b>.");	
 }
 else
 {
 	$sql = "SELECT * from ujian ;";									
-	$ujian_hasil = mysqli_query($koneksi, $sql) or exit("Error query: <b>".$sql."</b>.");
+	$ujian_hasil_admin = mysqli_query($koneksi, $sql) or exit("Error query: <b>".$sql."</b>.");
 }
-
 
 if (isset($_POST['cariUjianSiswa'])) {
 	$key = $_POST['txtCari'];
 	$sql = "SELECT * from ujian where (nama_ujian like '%".$key."%')";
-	$ujian_hasil = mysqli_query($koneksi, $sql) or exit("Error query : <b>".$sql."</b>.");	
+	$ujian_hasil_siswa = mysqli_query($koneksi, $sql) or exit("Error query : <b>".$sql."</b>.");	
 }
 else
 {
 	$sql = "SELECT * from ujian ;";									
-	$ujian_hasil = mysqli_query($koneksi, $sql) or exit("Error query: <b>".$sql."</b>.");
+	$ujian_hasil_siswa = mysqli_query($koneksi, $sql) or exit("Error query: <b>".$sql."</b>.");
 }
+
+
+
 
 function generate_token(){
 	$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

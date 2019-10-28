@@ -71,6 +71,7 @@
 							</div>
 						</div>
 					</div>	
+
 					<div class="col-md-12 col-lg-4 p-t-10">
 						<form class="form-inline" action="indexadmin.php?page=ujian" method="POST">
 							<input class="form-control mr-sm-2" name="txtCari" type="search" style="height: 25px;" placeholder="Cari ujian ..." aria-label="Search">
@@ -97,7 +98,7 @@
 								</tr>
 								<?php
 								$no = 1;
-								while($data = mysqli_fetch_array($ujian_hasil)){
+								while($data = mysqli_fetch_array($ujian_hasil_admin)){
 									?>
 									<tr class="text-middle">
 										<td><?php echo $no++; ?></td>

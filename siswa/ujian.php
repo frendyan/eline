@@ -29,7 +29,7 @@
 							</tr>
 							<?php
 							$no = 1;
-							while($data = mysqli_fetch_assoc($ujian_hasil)){
+							while($data = mysqli_fetch_assoc($ujian_hasil_siswa)){
 								?>
 								<tr class="text-middle">
 									<td><?php echo $no++; ?></td> 

@@ -122,6 +122,8 @@ if(isset($_POST['selesaiUjian'])){
 		$nilai_akhir = 100;
 	}
 
+	echo "$nilai_akhir";
+	die();
 
 	$sql = mysqli_query($koneksi, "INSERT into hasil_ujian values ('','$id_ujian','$id_user','$nilai_akhir') ");
 

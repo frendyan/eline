@@ -24,11 +24,11 @@
 										</div>
 
 										<div class="form-group text-left">									
-											<input type="hidden" name="pelajaranUjian" value="<?php echo get_pelajaran_guru($nik); ?>" />
+											<input type="hidden" name="pelajaranUjian" value="<?php echo get_pelajaran_guru($id_user); ?>" />
 										</div>
 
 										<div class="form-group text-left">									
-											<input type="hidden" name="guruUjian" value="<?php echo $nik ?>" />
+											<input type="hidden" name="guruUjian" value="<?php echo $id_user ?>" />
 										</div>
 
 										<div class="form-group text-left">	
@@ -125,11 +125,11 @@
 																	</div>
 
 																	<div class="form-group text-left">									
-																		<input type="hidden" name="pelajaranUjian" value="<?php echo get_pelajaran_guru($nik); ?>" />
+																		<input type="hidden" name="pelajaranUjian" value="<?php echo get_pelajaran_guru($id_user); ?>" />
 																	</div>
 
 																	<div class="form-group text-left">									
-																		<input type="hidden" name="guruUjian" value="<?php echo $nik ?>" />
+																		<input type="hidden" name="guruUjian" value="<?php echo $id_user ?>" />
 																	</div>
 																	<div class="form-group text-left">									
 																		<select class="form-control" name="statusUjian" required>

@@ -7,7 +7,7 @@
 						<p class="p-t-5 title" align="left"><strong>NILAI SISWA</strong></p>
 					</div>					
 					<div class="col-md-12 col-lg-4 p-t-10">
-						<form class="form-inline" action="indexguru.php?page=ujian" method="POST">
+						<form class="form-inline" action="indexguru.php?page=nilaisiswa" method="POST">
 							<input class="form-control mr-sm-2 ht-25" name="txtCari" type="search" placeholder="Cari ujian ..." aria-label="Search">
 							<button class="btn btn-outline-info ht-25 my-2 my-sm-0 p-t-0" name="cariUjian1" type="submit">Cari</button>
 						</form>
