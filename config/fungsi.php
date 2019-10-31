@@ -435,11 +435,11 @@ if (isset($_POST['tambahSoal'])) {
 
 	mysqli_query($koneksi, "INSERT into soal values ('','$id','$soal','$jawaban','$pre')");
 	if ($user == '1') {
-		echo "<script> alert ('Data ujian berhasil ditambahkan');
+		echo "<script> alert ('Data soal berhasil ditambahkan');
 		document.location='indexadmin.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}elseif ($user == '2') {
-		echo "<script> alert ('Data ujian berhasil ditambahkan');
+		echo "<script> alert ('Data soal berhasil ditambahkan');
 		document.location='indexguru.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}
@@ -457,11 +457,11 @@ if (isset($_POST['updateSoal'])) {
 
 	mysqli_query($koneksi, "UPDATE soal set soal = '$soal', kunci_jawaban = '$jawaban', kunci_jawaban_stem = '$pre' where id_soal = '$id'");
 	if ($user == '1') {
-		echo "<script> alert ('Data ujian berhasil diubah');
+		echo "<script> alert ('Data soal berhasil diubah');
 		document.location='indexadmin.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}elseif ($user == '2') {
-		echo "<script> alert ('Data ujian berhasil diubah');
+		echo "<script> alert ('Data soal berhasil diubah');
 		document.location='indexguru.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}
@@ -476,11 +476,11 @@ if (isset($_POST['hapusSoal'])) {
 	$sql = "DELETE from soal where id_soal = '$idsoal'";
 	mysqli_query($koneksi, $sql) or die(mysqli_error());
 	if ($user == '1') {
-		echo "<script> alert ('Data ujian berhasil dihapus');
+		echo "<script> alert ('Data soal berhasil dihapus');
 		document.location='indexadmin.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}elseif ($user == '2') {
-		echo "<script> alert ('Data ujian berhasil dihapus');
+		echo "<script> alert ('Data soal berhasil dihapus');
 		document.location='indexguru.php?page=kelolaujian&id_ujian=".$idujian."';
 		</script>";
 	}
@@ -515,6 +515,7 @@ if (isset($_POST['updatePelajaran'])){
 	$sql = "UPDATE pelajaran SET nama_pelajaran='$nama_pelajaran' WHERE id_pelajaran='$id_pelajaran' ";
 	if (mysqli_query($koneksi, $sql)) {
 		echo "<script> alert ('Data pelajaran berhasil diubah');	
+		document.location='indexadmin.php?page=pelajaran';
 		</script>";
 	}
 	else{
@@ -527,6 +528,7 @@ if (isset($_POST['simpanPelajaran'])) {
 	$namaPelajaran= $_POST['namaPelajaran'];
 	mysqli_query($koneksi, "INSERT into pelajaran values ('','$namaPelajaran')") or die(mysqli_error());
 	echo "<script> alert ('Data pelajaran berhasil ditambahkan');
+	document.location='indexadmin.php?page=pelajaran';
 	</script>";
 }
 

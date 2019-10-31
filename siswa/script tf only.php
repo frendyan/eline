@@ -1,15 +1,16 @@
 <?php 
-for($no=1;$no<$panjang;$no++) {
+
+for($no=0;$no<$panjang;$no++) {
 	$sql = "SELECT kunci_jawaban FROM soal where id_soal='$id_soal[$no]'";
 	$recset = mysqli_query($koneksi, $sql);
 	$data = mysqli_fetch_array($recset);
 	$kunci_stem = $data['kunci_jawaban'];
 
 	for ($i=0; $i < 1; $i++) { 			
-		$temp1 = explode(" ", $kunci_stem);
+		$temp1 = explode(" ", strtolower(hapus_simbol($kunci_stem)));
 		$kunci[$no] = array_values(array_filter($temp1));
 
-		$temp2 = explode(" ",$jwbn[$no]);
+		$temp2 = pecah_kata(strtolower(hapus_simbol($jwbn[$no])));
 		$jawaban[$no][$i] = array_values(array_filter($temp2));
 		$jawaban_final[$no] = array_values($jawaban[$no][$i]);
 
@@ -64,7 +65,9 @@ for($no=1;$no<$panjang;$no++) {
 			$cossim[$no] = 0;
 		}
 	}
+
 	$total += $cossim[$no];
 }
+
 
 ?>

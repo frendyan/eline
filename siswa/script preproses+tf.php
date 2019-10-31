@@ -1,5 +1,5 @@
 <?php 
-for($no=1;$no<$panjang;$no++) {
+for($no=0;$no<$panjang;$no++) {
 	$sql = "SELECT kunci_jawaban_stem FROM soal where id_soal='$id_soal[$no]'";
 	$recset = mysqli_query($koneksi, $sql);
 	$data = mysqli_fetch_array($recset);

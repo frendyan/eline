@@ -1,24 +1,29 @@
 <?php 
 
 
-for($no=1;$no<$panjang;$no++) {
+for($no=0;$no<$panjang;$no++) {
 	$sql = "SELECT kunci_jawaban FROM soal where id_soal='$id_soal[$no]'";
 	$recset = mysqli_query($koneksi, $sql);
 	$data = mysqli_fetch_array($recset);
 	$kunci_stem = $data['kunci_jawaban'];
 
 	for ($i=0; $i < 1; $i++) { 			
-		$temp1 = explode(" ", $kunci_stem);
-		$kunci[$no] = array_values(array_filter($temp1));
 
-		$temp2 = explode(" ",$jwbn[$no]);
+		$temp1 = explode(" ", strtolower(hapus_simbol($kunci_stem)));
+		print_r($kunci[$no] = array_values(array_filter($temp1)));
+		echo "<br/>";
+
+
+		$temp2 = pecah_kata(strtolower(hapus_simbol($jwbn[$no])));
 		$jawaban[$no][$i] = array_values(array_filter($temp2));
-		$jawaban_final[$no] = array_values($jawaban[$no][$i]);
+		print_r($jawaban_final[$no] = array_values($jawaban[$no][$i]));
+		echo "<br/>";
 
 			// menggabungkan dua array yang berisi term untuk proses TF-IDF
 		$term[$no][$i] =array_values(array_unique(array_merge($kunci[$no], $jawaban[$no][$i])));
 
-		$term_final[$no] = array_values($term[$no][$i]); 
+		print_r($term_final[$no] = array_values($term[$no][$i])); 
+		echo "<br/>";
 
 			// menghitung ukuran array
 		$size_term_final = sizeof($term_final[$no]); 
@@ -48,6 +53,11 @@ for($no=1;$no<$panjang;$no++) {
 			$jumlah_js[$no][$y] = $count;								
 		}
 
+		echo "<br/>";
+		print_r($jumlah_kj[$no]);
+		echo "<br/>";
+		print_r($jumlah_js[$no]);
+		echo "<br/>";
 			// IDF calculation
 		for ($y=0; $y < $size_term_final; $y++) {			
 
