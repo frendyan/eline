@@ -14,6 +14,7 @@ if(isset($_POST['btnLogin']))
 		$_SESSION[namauser]=$r['nama_admin'];
 		$_SESSION[uname]=$r['uname_admin'];
 		$_SESSION[iduser]=$r['id_admin'];
+		$_SESSION[role]=1;
 		header('location:admin/indexadmin.php?'); 
 
 	}
@@ -28,6 +29,7 @@ if(isset($_POST['btnLogin']))
 		$_SESSION[namauser]=$r['nama_guru'];
 		$_SESSION[passuser]=$r['pass_guru'];
 		$_SESSION[iduser]=$r['nik_guru'];
+		$_SESSION[role]=2;
 
 		header('location:guru/indexguru.php?'); 
 	}	
@@ -42,6 +44,7 @@ if(isset($_POST['btnLogin']))
 		$_SESSION[namauser]=$r['nama_siswa'];
 		$_SESSION[passuser]=$r['pass_siswa'];
 		$_SESSION[iduser]=$r['nis_siswa'];
+		$_SESSION[role]=3;
 		header('location:siswa/indexsiswa.php?'); 
 	}	
 	else {

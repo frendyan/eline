@@ -1,10 +1,5 @@
 <?php
 
-if(empty($_SESSION['namauser']) ) {
-	header('location:../login.php');
-	exit;
-}
-
 function get_guru_from_id($id) {
 	include 'koneksi.php';
 	$sql = "SELECT nama_guru FROM guru where nik_guru='$id'";
@@ -312,12 +307,12 @@ else
 
 if (isset($_POST['cariUjianSiswa'])) {
 	$key = $_POST['txtCari'];
-	$sql = "SELECT * from ujian where (nama_ujian like '%".$key."%')";
+	$sql = "SELECT * from ujian where (aktif = 1 and nama_ujian like '%".$key."%')";
 	$ujian_hasil_siswa = mysqli_query($koneksi, $sql) or exit("Error query : <b>".$sql."</b>.");	
 }
 else
 {
-	$sql = "SELECT * from ujian ;";									
+	$sql = "SELECT * from ujian where aktif = 1;";									
 	$ujian_hasil_siswa = mysqli_query($koneksi, $sql) or exit("Error query: <b>".$sql."</b>.");
 }
 
@@ -1121,5 +1116,29 @@ function preproses($input) {
 	return $data;
 }
 
+function konversi($nilai){
+	$nilai_akhir = 0;
+	if ($nilai >= 0.01 && $nilai <= 0.10) {
+		return $nilai_akhir= 10;
+	}elseif ($nilai > 0.10 && $nilai <= 0.20) {
+		return $nilai_akhir= 20;
+	}elseif ($nilai > 0.20 && $nilai <= 0.30) {
+		return $nilai_akhir= 30;
+	}elseif ($nilai > 0.30 && $nilai <= 0.40) {
+		return $nilai_akhir= 40;
+	}elseif ($nilai > 0.40 && $nilai <= 0.50) {
+		return $nilai_akhir= 50;
+	}elseif ($nilai > 0.50 && $nilai <= 0.60) {
+		return $nilai_akhir= 60;
+	}elseif ($nilai > 0.60 && $nilai <= 0.70) {
+		return $nilai_akhir= 70;
+	}elseif ($nilai > 0.70 && $nilai <= 0.80) {
+		return $nilai_akhir= 80;
+	}elseif ($nilai > 0.80 && $nilai <= 0.90) {
+		return $nilai_akhir= 90;
+	}elseif ($nilai > 0.90) {
+		return $nilai_akhir = 100;
+	}
+}
 
 ?>
