@@ -69,6 +69,14 @@ function get_pelajaran_from_id($id) {
 	return $dt['nama_pelajaran'];
 }
 
+function get_pelajaran_from_id_ujian($id) {
+	include 'koneksi.php';
+	$sql = "SELECT id_pelajaran from ujian where id_ujian='$id'";
+	$rs = mysqli_query($koneksi, $sql);
+	$dt = mysqli_fetch_array($rs);
+	return $dt['id_pelajaran'];
+}
+
 function get_id_pelajaran_from_id_ujian($id) {
 	include 'koneksi.php';
 	$sql = "SELECT id_pelajaran FROM ujian where id_ujian='$id'";

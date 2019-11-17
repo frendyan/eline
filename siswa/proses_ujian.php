@@ -13,6 +13,7 @@ if(isset($_POST['selesaiUjian'])){
 	$panjang = count($id_soal);
 	$total = 0;
 	$cossim_final=0;
+	$nilai_max_per_soal = 100/$panjang;
 	$nilai_akhir = 0;
 
 	for($no=0;$no<$panjang;$no++) {
@@ -23,21 +24,21 @@ if(isset($_POST['selesaiUjian'])){
 
 		for ($i=0; $i < 1; $i++) { 			
 			$temp1 = explode(" ", $kunci_stem);
-			print_r($kunci[$no] = array_values(array_filter($temp1)));
-			// $kunci[$no] = array_values(array_filter($temp1));
+			// print_r($kunci[$no] = array_values(array_filter($temp1)));
+			$kunci[$no] = array_values(array_filter($temp1));
 
 			$str = preproses($jwbn[$no]);
 			$temp2 = explode(" ", $str);
 			$jawaban[$no][$i] = array_values(array_filter($temp2));
 			echo "<br/>";
-			print_r($jawaban_final[$no] = array_values($jawaban[$no][$i]));
-			// $jawaban_final[$no] = array_values($jawaban[$no][$i]);
+			// print_r($jawaban_final[$no] = array_values($jawaban[$no][$i]));
+			$jawaban_final[$no] = array_values($jawaban[$no][$i]);
 
 			// menggabungkan dua array yang berisi term untuk proses TF-IDF
 			$term[$no][$i] =array_values(array_unique(array_merge($kunci[$no], $jawaban[$no][$i])));
-			echo "<br/>";
-			print_r($term_final[$no] = array_values($term[$no][$i])); 
-			// $term_final[$no] = array_values($term[$no][$i]); 
+			// echo "<br/>";
+			// print_r($term_final[$no] = array_values($term[$no][$i])); 
+			$term_final[$no] = array_values($term[$no][$i]); 
 
 			// menghitung ukuran array
 			$size_term_final = sizeof($term_final[$no]); 
@@ -67,11 +68,11 @@ if(isset($_POST['selesaiUjian'])){
 				$jumlah_js[$no][$y] = $count;								
 			}
 
-			echo "<br/>";
-			print_r($jumlah_kj[$no]);
-			echo "<br/>";
-			print_r($jumlah_js[$no]);
-			echo "<br/>";
+			// echo "<br/>";
+			// print_r($jumlah_kj[$no]);
+			// echo "<br/>";
+			// print_r($jumlah_js[$no]);
+			// echo "<br/>";
 			
 
 			// IDF calculation
@@ -101,24 +102,47 @@ if(isset($_POST['selesaiUjian'])){
 
 			$bawah_final = sqrt($bawah1) * sqrt($bawah2);
 
+
+			//mainkan disini
+
 			if ($atas != 0 || $bawah_final != 0) {
-				echo $cossim[$no] = $atas/$bawah_final;
-				echo "<br/>";
+				$cossim[$no] = $atas/$bawah_final;
+				// echo $cossim[$no] = $atas/$bawah_final;
+				// echo "<br/>";
 				if ($cossim[$no] < 0.1) {
-					echo $tempo = 7;
+					$tempo = 7;
+					// echo $tempo = 7;
 				}else{
-					echo $tempo = konversi($cossim[$no]);
+					$tempo = konversi($cossim[$no]);
+					// echo $tempo = konversi($cossim[$no]);
 				}			
 			}
 			else{
 				$tempo = 7;
 			}
 
+			// custom untuk soal seni budaya
+			// if ($atas != 0 || $bawah_final != 0) {
+			// 	echo $cossim[$no] = $atas/$bawah_final;
+			// 	echo "<br/>";
+			// 	if ($cossim[$no] < 0.34) {
+			// 		echo $tempo = 34;
+			// 	}else{
+			// 		echo $tempo = konversi($cossim[$no]);
+			// 	}			
+			// }
+			// else{
+			// 	$tempo = 34;
+			// }
 
-			echo "<br/>";
-		// $tempo = konversi($cossim[$no]);
-			echo $total += $tempo;
-			echo "<br/> -------------------------------------<br/>";
+
+			// echo "<br/>";
+			$total += $tempo;
+			$nilai_akhir = $total*$nilai_max_per_soal/100;
+			// echo $total += $tempo;
+			// echo "<br/>";
+			// echo $nilai_akhir = $total*$nilai_max_per_soal/100;
+			// echo "<br/> -------------------------------------<br/>";
 		}
 
 	}
@@ -128,7 +152,7 @@ if(isset($_POST['selesaiUjian'])){
 	// echo round($cossim_final = $total/$panjang, 2);
 	// echo "<br/>";
 	// echo "$nilai_akhir";
-	die();
+	// die();
 
 	$sql = mysqli_query($koneksi, "INSERT into hasil_ujian values ('','$id_ujian','$id_user','$nilai_akhir') ");
 
